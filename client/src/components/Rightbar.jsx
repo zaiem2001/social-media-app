@@ -152,7 +152,10 @@ const ProfileRightBar = ({ ourProfile }) => {
         </div>
 
         <div className="user__info__item">
-          <div className="user__info__key">Account Created :</div>
+          <div className="user__info__key">
+            {" "}
+            {ourProfile ? "Account Created :" : "Joined :"}{" "}
+          </div>
           <div className="user__info__value">
             {ourProfile
               ? format(userInfo?.createdAt) || "Null"
@@ -160,14 +163,16 @@ const ProfileRightBar = ({ ourProfile }) => {
           </div>
         </div>
 
-        <div className="user__info__item">
-          <div className="user__info__key">Account Last Updated :</div>
-          <div className="user__info__value">
-            {ourProfile
-              ? format(userInfo?.updatedAt) || "Null"
-              : format(user?.updatedAt) || "Null"}
+        {ourProfile && (
+          <div className="user__info__item">
+            <div className="user__info__key">Account Last Updated :</div>
+            <div className="user__info__value">
+              {ourProfile
+                ? format(userInfo?.updatedAt) || "Null"
+                : format(user?.updatedAt) || "Null"}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <h5 className="profile__user__friends">
