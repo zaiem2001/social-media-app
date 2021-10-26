@@ -144,15 +144,16 @@ const UpdateProfile = ({ user, id }) => {
         )}
 
         {error && (
-          <div
-            className="customError"
-            style={{ position: "absolute", top: "18%", left: "11%" }}
-          >
+          <div className="customError">
             {error && <Message variant="danger">{error}</Message>}
           </div>
         )}
 
         <h3 className="up__heading">Update Profile ( {user} )</h3>
+
+        <h5 className="up__info">
+          You won't be able to change your profile for next 24 hrs
+        </h5>
 
         <Link to="/">
           <button type="button" className="up__back__button">

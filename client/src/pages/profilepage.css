@@ -144,3 +144,13 @@
 .profile__follow__button button:hover {
   transform: scale(0.96);
 }
+
+@media only screen and (max-width: 770px) {
+  .profile__update__button {
+    right: 15% !important;
+  }
+
+  .profile__follow__button {
+    right: 15%;
+  }
+}

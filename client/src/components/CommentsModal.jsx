@@ -283,15 +283,6 @@ function CommentsModal(props) {
           className="comment__input"
           type="text"
           placeholder="Comment..."
-          style={{
-            padding: "10px",
-            paddingLeft: "20px",
-            width: "80%",
-            border: "none",
-            fontSize: "20px",
-            fontWeight: "500",
-            borderRadius: "8px",
-          }}
           onChange={(e) => {
             setComment(e.target.value);
             setAddComment({ error: null, success: false, loading: false });
@@ -301,6 +292,7 @@ function CommentsModal(props) {
         <Button
           onClick={() => addCommentHandler(post)}
           disabled={addComment.loading}
+          className="comment__add"
         >
           {loading || addComment.loading || deleteComment.loading ? (
             <Loader size="20px" />

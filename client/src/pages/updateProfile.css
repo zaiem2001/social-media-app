@@ -145,3 +145,60 @@
 .up__back__button:hover {
   transform: scale(0.95);
 }
+
+.customError {
+  position: absolute !important;
+  top: 18% !important;
+  left: 11% !important;
+}
+
+.up__info {
+  position: absolute;
+  bottom: 7%;
+  font-weight: 500;
+  opacity: 0.5;
+  color: beige;
+  word-spacing: 2px;
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 770px) {
+  .up__wrapper {
+    flex-direction: column;
+  }
+
+  .updateProfile input {
+    padding: 12px;
+  }
+
+  .up__relationship {
+    padding: 14px;
+  }
+
+  .up__update {
+    left: 50%;
+    bottom: 5%;
+  }
+
+  .up__left i {
+    position: absolute;
+    top: 48%;
+  }
+
+  .up__profile__picture__container {
+    right: 0;
+    bottom: 15%;
+    right: 20%;
+  }
+
+  .customError {
+    position: absolute;
+    top: 7% !important;
+    left: 50% !important;
+    right: 0;
+  }
+
+  .up__heading {
+    top: 18px;
+  }
+}
