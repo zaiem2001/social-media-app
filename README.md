@@ -23,8 +23,8 @@
 
 ## To run this project in your pc :-
  * git clone **https://github.com/zaiem2001/social-media-app/**
+ * npm install in client and npm install in root
  * in **root folder** i.e Not in client or backend folder
- * npm install
  * npm run both
  * image upload will not work on your local pc as my **firebase api keys** are used in this project which are not committed to the github.
  * You can use locally by adding your api keys and app id in **./client/src/firebase** folder where **firebase config** has all **api** keys, replace mine with your creds
