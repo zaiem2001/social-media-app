@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import { format } from "timeago.js";
 
 import { getUserById, getUserFriends, logout } from "../actions/userActions";
 import Online from "./Online";
@@ -147,6 +148,24 @@ const ProfileRightBar = ({ ourProfile }) => {
               : user?.relationship === 3
               ? "Other"
               : "Not Mentioned."}
+          </div>
+        </div>
+
+        <div className="user__info__item">
+          <div className="user__info__key">Account Created :</div>
+          <div className="user__info__value">
+            {ourProfile
+              ? format(userInfo?.createdAt) || "Null"
+              : format(user?.createdAt) || "Null"}
+          </div>
+        </div>
+
+        <div className="user__info__item">
+          <div className="user__info__key">Account Last Updated :</div>
+          <div className="user__info__value">
+            {ourProfile
+              ? format(userInfo?.updatedAt) || "Null"
+              : format(user?.updatedAt) || "Null"}
           </div>
         </div>
       </div>

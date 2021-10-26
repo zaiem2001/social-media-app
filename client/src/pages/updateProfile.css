@@ -164,7 +164,7 @@
 
 @media only screen and (max-width: 770px) {
   .up__wrapper {
-    flex-direction: column;
+    flex-direction: column; 
   }
 
   .updateProfile input {
