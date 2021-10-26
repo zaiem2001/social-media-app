@@ -1,0 +1,146 @@
+.profilepage {
+  display: flex;
+}
+
+.profile__right {
+  flex: 9;
+}
+
+.profile__cover {
+  height: 320px;
+  position: relative;
+}
+
+.profile__cover__img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.profile__user__img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  margin: auto;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  padding-top: 0;
+
+  /* background-color: black; */
+}
+
+.profile__info__name {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.profile__desc {
+  font-weight: 300;
+}
+
+.profile__bottom__right {
+  display: flex;
+}
+
+.profile__friends__info {
+  position: absolute;
+  width: 100%;
+  height: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.profile__friends__info span {
+  font-weight: 500;
+  color: white;
+  z-index: 99;
+  font-size: 25px;
+}
+
+.profile__friends__info b {
+  font-size: 30px;
+  color: white;
+  z-index: 99;
+  font-weight: 700;
+}
+
+.profile__update__button,
+.profile__delete__button {
+  position: absolute;
+  right: 27%;
+  bottom: 2%;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(108, 82, 134);
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all ease-in-out 200ms;
+}
+
+.profile__delete__button {
+  right: 6%;
+  color: white;
+  font-family: inherit;
+  background-color: crimson;
+  font-weight: 400;
+  width: 200px;
+  font-size: 20px;
+}
+
+.profile__update__button:hover,
+.profile__delete__button:hover {
+  transform: scale(0.95);
+  color: black;
+}
+
+.profile__cover a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.profile__cover a:hover {
+  color: black;
+}
+
+.profile__follow__button {
+  position: absolute;
+  right: 27%;
+  bottom: 2%;
+  width: 150px;
+}
+
+.profile__follow__button button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transition: all ease-in-out 200ms;
+}
+
+.profile__follow__button button:hover {
+  transform: scale(0.96);
+}

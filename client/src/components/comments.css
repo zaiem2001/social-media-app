@@ -1,0 +1,33 @@
+.comment {
+  background-color: rgb(234, 236, 236);
+  padding: 15px;
+  color: black;
+  display: flex;
+  margin-bottom: 5px;
+
+  /* transform: translateY(100%); */
+
+  z-index: 1;
+}
+
+.comment__img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.user__comment {
+  display: flex;
+  align-items: center;
+}
+
+.comment__user__name {
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.user__comment__text {
+  font-size: 14px;
+}

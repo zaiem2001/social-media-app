@@ -1,0 +1,117 @@
+.rightbar {
+  flex: 3.5;
+}
+
+.rightbar__wrapper {
+  padding: 20px 20px 0 0;
+}
+
+.rightbar__birthday__container {
+  display: flex;
+  align-items: center;
+}
+
+.rightbar__birthday__img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.rightbar__ad {
+  margin: 20px 0;
+}
+
+.rightbar__ad__img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* #################################### Profile styles */
+
+.profile__details {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.profile__hr {
+  margin: 15px 0;
+}
+/* 
+.user__info {
+  display: flex;
+  flex-direction: column;
+} */
+
+.profile__rightbar__logout {
+  display: flex;
+  align-items: center;
+}
+
+.logout__button {
+  padding: 5px 20px;
+  width: 50%;
+  margin-left: 30px;
+  border: none;
+  font-weight: 500;
+  color: white;
+  font-size: 18px;
+  background-color: rebeccapurple;
+  border-radius: 10px;
+  transition: all ease-in-out 200ms;
+}
+
+.logout__button:hover {
+  transform: scale(0.96);
+  color: black;
+}
+
+.user__info__item {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.user__info__key {
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.user__info__value {
+  font-weight: 400;
+}
+
+.profile__user__friends {
+  font-size: 20px;
+  margin: 25px 0 0 0;
+  font-weight: 700;
+}
+
+.user__friends {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user__friend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.user__friend__username {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px 0 3px 0;
+}
+
+.user__profile__img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+}

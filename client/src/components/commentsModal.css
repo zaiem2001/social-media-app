@@ -1,0 +1,16 @@
+.comment__input:focus {
+  outline: none;
+}
+
+.delete__comment {
+  transition: all ease-in-out 100ms;
+}
+
+.delete__comment:hover {
+  transform: scale(0.9);
+  color: white;
+}
+
+.delete__comment:disabled {
+  cursor: not-allowed;
+}

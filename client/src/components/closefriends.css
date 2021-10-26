@@ -1,0 +1,30 @@
+.sidebar__friendlist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar__friend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.sidebar__friend:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.friend__name {
+  font-weight: 500;
+}
+
+.sidebar__friend__img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}

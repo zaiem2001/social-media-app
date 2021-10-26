@@ -1,0 +1,15 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media only screen and (max-width: 770px) {
+  /* sidebar */
+  .sidebar {
+    display: none !important;
+  }
+}
