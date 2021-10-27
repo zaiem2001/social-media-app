@@ -48,8 +48,8 @@ const RegisterPage = ({ history, location }) => {
   return (
     <div className="loginpage">
       <div className="login__wrapper">
-        <div className="login__left">
-          <h2 className="login__logo__text">Z_social</h2>
+        <div className="login__left Register">
+          <h2 className="login__logo__text">Z_Book</h2>
           <span className="login__logo__desc">
             Connect with your friends, Chat worldwide.
           </span>

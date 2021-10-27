@@ -168,3 +168,44 @@
     font-size: 10px;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .navbar {
+    width: 100vw;
+    padding: 0 10px 0 20px;
+  }
+
+  .nav__left {
+    flex: 3;
+  }
+
+  .nav__notification:not(:nth-child(2)) {
+    display: none;
+  }
+
+  .nav__center {
+    flex: 7;
+  }
+
+  .nav__right {
+    flex: 2;
+  }
+
+  .right__links {
+    display: none;
+  }
+
+  .nav__input__container {
+    /* display: none; */
+  }
+
+  .right__links .nav__home__link {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .right__links span {
+    font-size: 11px;
+  }
+}

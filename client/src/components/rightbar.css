@@ -115,3 +115,40 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+@media only screen and (max-width: 500px) {
+  .rightbar.HomeRight {
+    display: none;
+  }
+
+  .logout__button {
+    font-size: 14px;
+    width: 120px;
+  }
+
+  .profile__details,
+  .profile__user__friends {
+    font-size: 19px;
+    font-weight: 800;
+  }
+
+  .user__info__key {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .user__info__value {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .user__profile__img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+  }
+
+  .profile__right__bar {
+    padding: 0 25px;
+  }
+}

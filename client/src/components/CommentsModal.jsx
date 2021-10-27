@@ -190,6 +190,7 @@ function CommentsModal(props) {
           minHeight: "250px",
           maxHeight: "400px",
           overflowY: "auto",
+          padding: "10px",
         }}
       >
         {loading && <Loader size="40px" />}
@@ -198,15 +199,7 @@ function CommentsModal(props) {
           <Message variant="info">No Comments</Message>
         ) : (
           <>
-            <ul
-              className="post__comments"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-              }}
-              ref={commentRef}
-            >
+            <ul className="post__comments__ul" ref={commentRef}>
               {addComment.error && (
                 <Message variant="danger">{addComment.error}</Message>
               )}

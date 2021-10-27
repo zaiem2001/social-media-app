@@ -105,6 +105,9 @@
   right: 0;
   bottom: 28%;
   right: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .up__profile__picture__container img {
@@ -164,7 +167,7 @@
 
 @media only screen and (max-width: 770px) {
   .up__wrapper {
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   .updateProfile input {
@@ -177,7 +180,7 @@
 
   .up__update {
     left: 50%;
-    bottom: 5%;
+    bottom: 3%;
   }
 
   .up__left i {
@@ -200,5 +203,64 @@
 
   .up__heading {
     top: 18px;
+  }
+
+  .up__info {
+    bottom: 9.5%;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .updateProfile {
+    overflow-x: hidden;
+  }
+
+  .up__wrapper {
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .up__heading {
+    font-size: 18px;
+  }
+
+  .up__relationship {
+    width: 100%;
+  }
+
+  .updateProfile input {
+    padding: 7px 0;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  .up__back__button {
+    width: 100px;
+    font-size: 12px;
+    left: 69%;
+  }
+
+  .customError {
+    width: 60%;
+    left: 4% !important;
+    top: 6% !important;
+    font-size: 13px;
+  }
+
+  .up__profile__picture__container {
+    flex-direction: column;
+    right: 5%;
+    bottom: 12.5%;
+  }
+
+  .up__info {
+    font-size: 11px;
+    bottom: 9%;
+  }
+
+  .up__update {
+    font-size: 14px;
+    width: 150px;
   }
 }

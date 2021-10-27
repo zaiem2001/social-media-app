@@ -13,3 +13,10 @@ body {
     display: none !important;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  /* sidebar */
+  body {
+    overflow-x: hidden;
+  }
+}

@@ -195,3 +195,17 @@
 .post__dropdown:hover {
   background-color: transparent;
 }
+
+@media only screen and (max-width: 500px) {
+  .post__heart {
+    font-size: 60px;
+  }
+
+  .post__comments__count {
+    font-size: 14px;
+  }
+
+  .post__icon {
+    font-size: 20px !important;
+  }
+}

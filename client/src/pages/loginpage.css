@@ -92,3 +92,41 @@
 .loginpage a:hover {
   color: rebeccapurple;
 }
+
+@media only screen and (max-width: 500px) {
+  .login__wrapper {
+    width: 100% !important;
+    height: 100% !important;
+
+    flex-direction: column;
+  }
+
+  .login__left {
+    /* background-color: black; */
+    flex: 5 !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__logo__desc {
+    text-align: center;
+    width: 100%;
+  }
+
+  .login__right {
+    flex: 7 !important;
+  }
+
+  .login__input__box {
+    height: 100%;
+    justify-content: flex-start;
+  }
+
+  .login__input__box input {
+    margin-bottom: 20px;
+  }
+
+  .login__new {
+    margin-top: 15px;
+  }
+}

@@ -1,16 +1,82 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { Search, Person, Notifications, Message } from "@material-ui/icons";
 
 import "./navbar.css";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import Example from "./Example";
 
 const NavBar = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const searchRef = useRef();
+
+  const [search, setSearch] = useState({
+    user: "",
+    error: null,
+    loading: false,
+  });
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (searchRef.current.value.trim() && userInfo) {
+      setSearch({ loading: true, user: "", error: null });
+      const url = `/api/users/user?username=${searchRef.current.value}`;
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo?.token}`,
+        },
+      };
+
+      try {
+        const { data } = await axios.get(url, config);
+
+        setSearch({ loading: false, error: null, user: data });
+        setShow(false);
+      } catch (error) {
+        setSearch({
+          loading: false,
+          error: error.response.data.message || error.message,
+          user: "",
+        });
+
+        setShow(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo && !search.error && search.user) {
+      history.push(`/profile/${search.user}`);
+      setSearch({});
+    }
+  }, [userInfo, search, history]);
+
   return (
     <div className="navbar">
+      {search.error && (
+        <Example
+          error={search.error}
+          show={show}
+          setShow={setShow}
+          handleClose={handleClose}
+          handleShow={handleShow}
+          value={searchRef.current.value}
+        />
+      )}
+
       <div className="nav__left">
         <div className="logo">
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -19,14 +85,18 @@ const NavBar = () => {
         </div>
       </div>
       <div className="nav__center">
-        <div className="nav__input__container">
+        <form className="nav__input__container" onSubmit={handleSubmit}>
           <Search className="input__icon" />
-          <input type="text" placeholder="Search for friends..." />
-        </div>
+          <input
+            type="text"
+            placeholder="Search for friends..."
+            ref={searchRef}
+          />
+        </form>
       </div>
       <div className="nav__right">
         <div className="right__links">
-          <span>Homepage</span>
+          <span className="nav__home__link">Homepage</span>
           <Link to="/update" style={{ textDecoration: "none" }}>
             {" "}
             <span>Update Profile</span>
@@ -34,7 +104,7 @@ const NavBar = () => {
         </div>
 
         <div className="nav__notifications">
-          <div className="nav__notification">
+          <div className="nav__notification Person">
             <Person />
             <span className="nav__badge">1</span>
           </div>

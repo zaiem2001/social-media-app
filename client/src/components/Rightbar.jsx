@@ -28,7 +28,7 @@ const HomeRightBar = () => {
   }, [dispatch, userInfo]);
 
   return (
-    <>
+    <div className="home__right__bar">
       <div className="rightbar__birthday__container">
         <img
           src="assets/gift.png"
@@ -43,7 +43,7 @@ const HomeRightBar = () => {
       </div>
 
       <div className="rightbar__ad">
-        <img src="assets/ad.png" alt="ad" className="rightbar__ad__img" />
+        <img src="assets/post/10.jpeg" alt="ad" className="rightbar__ad__img" />
       </div>
 
       {friends && friends.length === 0 ? (
@@ -51,7 +51,7 @@ const HomeRightBar = () => {
       ) : (
         friends && friends.map((user) => <Online key={user?._id} user={user} />)
       )}
-    </>
+    </div>
   );
 };
 
@@ -99,7 +99,7 @@ const ProfileRightBar = ({ ourProfile }) => {
   };
 
   return (
-    <>
+    <div className="profile__right__bar">
       <div className="profile__rightbar__logout">
         <h5 className="profile__details">
           {ourProfile ? "Your" : !loading && user?.username + "'s"} Info
@@ -205,13 +205,13 @@ const ProfileRightBar = ({ ourProfile }) => {
       {!loading && friends?.length === 0 && (
         <Message variant="info">No Friends.</Message>
       )}
-    </>
+    </div>
   );
 };
 
 const Rightbar = ({ profile, ourProfile }) => {
   return (
-    <div className="rightbar">
+    <div className={profile ? "rightbar profileRight" : "rightbar HomeRight"}>
       <div className="rightbar__wrapper">
         {profile ? (
           <ProfileRightBar ourProfile={ourProfile} />

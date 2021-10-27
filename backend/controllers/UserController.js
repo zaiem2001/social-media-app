@@ -105,7 +105,7 @@ const UserController = {
 
     if (!user) {
       res.status(404);
-      throw new Error("Invalid Request.");
+      throw new Error("No User Found.");
     }
 
     res.status(200).json(user);
@@ -115,19 +115,19 @@ const UserController = {
   // get any user profile (logged in)
 
   anyUserProfile: expressAsyncHandler(async (req, res) => {
-    const userId = req.query.userId;
-    const username = req.query.username;
+    const userId = req.query.userId || "";
+    const username = req.query.username || "";
 
     const user = userId
       ? await User.findById(userId).select("-password")
-      : await User.findOne({ username });
+      : await User.findOne({ username }).select("-password");
 
     if (!user) {
       res.status(404);
       throw new Error("Invalid Request.");
     }
 
-    res.status(200).json(user);
+    res.status(200).json(user._id);
   }),
 
   // GET /api/users/:id

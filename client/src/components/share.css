@@ -122,3 +122,23 @@
     padding: 0;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .share {
+    min-height: 150px;
+  }
+
+  .share__input {
+    font-size: 14px;
+  }
+
+  .share__icon {
+    font-size: 16px !important;
+  }
+
+  .share__button {
+    width: 30%;
+    font-size: 13px;
+    padding: 0;
+  }
+}

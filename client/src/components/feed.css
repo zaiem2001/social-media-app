@@ -5,3 +5,61 @@
 .feed__wrapper {
   padding: 20px;
 }
+
+.all__users {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .all__users {
+    height: 150px;
+    display: block;
+    /* border: 1px solid black; */
+    position: relative;
+  }
+
+  .allfriends {
+    width: 350px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .singleFriendImg {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .singlefriend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 9px;
+    display: inline-block;
+    /* border: 1px solid black; */
+    padding: 5px;
+  }
+
+  .swiperight {
+    position: absolute;
+    bottom: -2%;
+    left: 38%;
+  }
+
+  .swipe__arrow {
+    transform: rotate(180deg);
+    margin-left: 5px;
+  }
+}

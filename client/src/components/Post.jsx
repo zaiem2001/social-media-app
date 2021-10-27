@@ -99,7 +99,7 @@ const Post = ({ post, ourProfile }) => {
 
   const deletePostHandler = async (id) => {
     if (window.confirm("Are You Sure ?")) {
-      console.log("deleted");
+      // console.log("deleted");
 
       // DELETE /api/posts/:id
       const url = `/api/posts/${id}`;

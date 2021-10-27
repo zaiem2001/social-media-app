@@ -25,9 +25,41 @@
   border-radius: 8px;
 }
 
+.post__comments__ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 @media only screen and (max-width: 770px) {
   .comment__input {
     font-size: 14px;
     width: 70%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .comment__input {
+    font-size: 12px;
+    width: 65%;
+  }
+
+  .post__comments__ul {
+    list-style-type: none;
+    width: 100%;
+    /* border: 1px solid black; */
+    /* margin: 0; */
+    padding: 0 15px;
+  }
+
+  .comment__add {
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .comment__add {
+    font-size: 12px;
   }
 }

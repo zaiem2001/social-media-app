@@ -76,7 +76,7 @@
 }
 
 .login__link {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .login__new {
@@ -90,4 +90,37 @@
 
 .loginpage a:hover {
   color: rebeccapurple;
+}
+
+@media only screen and (max-width: 500px) {
+  .login__wrapper {
+    width: 100% !important;
+    height: 100% !important;
+
+    flex-direction: column;
+  }
+
+  .login__left.Register {
+    flex: 4 !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__logo__desc {
+    text-align: center;
+    width: 100%;
+  }
+
+  .login__right {
+    flex: 8 !important;
+  }
+
+  .register__input__box {
+    height: 100%;
+    justify-content: flex-start;
+  }
+
+  .register__input__box input {
+    margin-bottom: 15px;
+  }
 }
