@@ -19,6 +19,7 @@ import Sidebar from "../components/Sidebar";
 import "./profilepage.css";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { Helmet } from "react-helmet";
 
 const ProfilePage = () => {
   const userLogin = useSelector((state) => state.userLogin);
@@ -160,6 +161,16 @@ const ProfilePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`Z social - Profile (${
+          ourProfile ? loggedUser?.username : user?.username
+        })`}</title>
+        <meta
+          name="description"
+          content="Meet your friends online with this app and chat with them."
+        />
+      </Helmet>
+
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => {

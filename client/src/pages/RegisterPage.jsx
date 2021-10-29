@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -47,6 +48,14 @@ const RegisterPage = ({ history, location }) => {
 
   return (
     <div className="loginpage">
+      <Helmet>
+        <title>Z social - Register</title>
+        <meta
+          name="description"
+          content="Meet your friends online with this app and chat with them."
+        />
+      </Helmet>
+
       <div className="login__wrapper">
         <div className="login__left Register">
           <h2 className="login__logo__text">Z_Book</h2>

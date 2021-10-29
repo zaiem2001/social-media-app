@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router";
 
 import Feed from "../components/Feed";
@@ -24,6 +25,19 @@ const HomePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Z social - Home Page</title>
+        <meta
+          name="description"
+          content="Meet your friends online with this app and chat with them."
+        />
+
+        <meta
+          name="keywords"
+          content="social media app, instagaram, instagaram clone, facebook, facebook clone, Chat with friends, Video call with friends, meet new friends online, make new friends faster and easier"
+        />
+      </Helmet>
+
       {loading && <Loader />}
 
       {error && <Message variant="danger">{error}</Message>}

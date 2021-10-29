@@ -7,6 +7,7 @@ import { login } from "../actions/userActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import "./loginpage.css";
+import { Helmet } from "react-helmet";
 
 const LoginPage = ({ location, history }) => {
   const [username, setUsername] = useState("");
@@ -44,6 +45,14 @@ const LoginPage = ({ location, history }) => {
 
   return (
     <div className="loginpage">
+      <Helmet>
+        <title>Z social - Login</title>
+        <meta
+          name="description"
+          content="Meet your friends online with this app and chat with them."
+        />
+      </Helmet>
+
       <div className="login__wrapper">
         <div className="login__left">
           <h2 className="login__logo__text">Z_Book</h2>

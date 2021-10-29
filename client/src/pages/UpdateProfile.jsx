@@ -11,6 +11,7 @@ import Message from "../components/Message";
 import "./updateProfile.css";
 import { updateUser } from "../actions/userActions";
 import Loader from "../components/Loader";
+import { Helmet } from "react-helmet";
 
 const UpdateProfile = ({ user, id }) => {
   const [username, setUsername] = useState("");
@@ -124,6 +125,14 @@ const UpdateProfile = ({ user, id }) => {
 
   return (
     <>
+      <Helmet>
+        <title>Z social - Update Profile</title>
+        <meta
+          name="description"
+          content="Meet your friends online with this app and chat with them."
+        />
+      </Helmet>
+
       <form className="updateProfile" onSubmit={updateProfileHandler}>
         {loading && (
           <div
