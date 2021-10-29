@@ -30,7 +30,7 @@ const ProfilePage = () => {
   const [loggedUser, setLoggedUser] = useState(null);
 
   const userById = useSelector((state) => state.userById);
-  const { user } = userById;
+  const { user, loading: getUserLoading } = userById;
 
   const dispatch = useDispatch();
 
@@ -171,155 +171,163 @@ const ProfilePage = () => {
         />
       </Helmet>
 
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => {
-          setModalShow(false);
-        }}
-        followers={followers}
-        loading={followersLoading}
-        user={userInfo && user}
-        ourProfile={ourProfile}
-      />
+      {!getUserLoading && !user ? (
+        <Message variant="danger"> No user found </Message>
+      ) : (
+        <>
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => {
+              setModalShow(false);
+            }}
+            followers={followers}
+            loading={followersLoading}
+            user={userInfo && user}
+            ourProfile={ourProfile}
+          />
 
-      <NavBar />
-      <div className="profilepage">
-        <Sidebar />
+          <NavBar />
+          <div className="profilepage">
+            <Sidebar />
 
-        <div className="profile__right">
-          <div className="profile__top__right">
-            <div className="profile__cover">
-              <div className="profile__friends__info">
-                <div className="profile__posts__info">
-                  <b>{posts?.length} </b>
-                  <span> Posts</span>
-                </div>
+            <div className="profile__right">
+              <div className="profile__top__right">
+                <div className="profile__cover">
+                  <div className="profile__friends__info">
+                    <div className="profile__posts__info">
+                      <b>{posts?.length} </b>
+                      <span> Posts</span>
+                    </div>
 
-                <div
-                  className="profile__Followers__info"
-                  style={{ cursor: "pointer" }}
-                  onClick={followersHandler}
-                >
-                  <b>
-                    {ourProfile
-                      ? loggedUser?.followers && loggedUser?.followers.length
-                      : user?.followers && user?.followers.length}
-                  </b>
-                  <span> Followers</span>
-                </div>
+                    <div
+                      className="profile__Followers__info"
+                      style={{ cursor: "pointer" }}
+                      onClick={followersHandler}
+                    >
+                      <b>
+                        {ourProfile
+                          ? loggedUser?.followers &&
+                            loggedUser?.followers.length
+                          : user?.followers && user?.followers.length}
+                      </b>
+                      <span> Followers</span>
+                    </div>
 
-                <div className="profile__Followings__info">
-                  <b>
-                    {ourProfile
-                      ? loggedUser?.followers && loggedUser?.followings.length
-                      : user?.followers && user?.followings.length}
-                  </b>
-                  <span> Followings</span>
-                </div>
-              </div>
+                    <div className="profile__Followings__info">
+                      <b>
+                        {ourProfile
+                          ? loggedUser?.followers &&
+                            loggedUser?.followings.length
+                          : user?.followers && user?.followings.length}
+                      </b>
+                      <span> Followings</span>
+                    </div>
+                  </div>
 
-              <img
-                src={
-                  ourProfile
-                    ? (userInfo && userInfo.coverPicture) ||
-                      "/assets/post/8.jpeg"
-                    : user?.coverPicture || "/assets/post/8.jpeg"
-                }
-                alt="post"
-                className="profile__cover__img"
-              />
-              <img
-                src={
-                  ourProfile
-                    ? (userInfo && userInfo.profilePicture) ||
-                      "/assets/person/noAvatar.png"
-                    : user?.profilePicture || "/assets/person/noAvatar.png"
-                }
-                alt="user"
-                className="profile__user__img"
-              />
+                  <img
+                    src={
+                      ourProfile
+                        ? (userInfo && userInfo.coverPicture) ||
+                          "/assets/post/8.jpeg"
+                        : user?.coverPicture || "/assets/post/8.jpeg"
+                    }
+                    alt="post"
+                    className="profile__cover__img"
+                  />
+                  <img
+                    src={
+                      ourProfile
+                        ? (userInfo && userInfo.profilePicture) ||
+                          "/assets/person/noAvatar.png"
+                        : user?.profilePicture || "/assets/person/noAvatar.png"
+                    }
+                    alt="user"
+                    className="profile__user__img"
+                  />
 
-              {ourProfile ? (
-                <>
-                  <Link to="/update" className="profile__update__button">
-                    <div>Edit Profile</div>
-                  </Link>
+                  {ourProfile ? (
+                    <>
+                      <Link to="/update" className="profile__update__button">
+                        <div>Edit Profile</div>
+                      </Link>
 
-                  {/* <button
+                      {/* <button
                     type="button"
                     onClick={userDeleteHandler}
                     className="profile__delete__button"
                   >
                     Delete Account
                   </button> */}
-                </>
-              ) : (
-                <div className="profile__follow__button">
-                  {userInfo &&
-                  user?.followers &&
-                  user?.followers.includes(userInfo._id) ? (
-                    <button
-                      type="button"
-                      onClick={() => followHandler("unfollow")}
-                    >
-                      UnFollow
-                    </button>
+                    </>
                   ) : (
-                    <button
-                      type="button"
-                      onClick={() => followHandler("follow")}
-                    >
-                      Follow
-                    </button>
-                  )}
+                    <div className="profile__follow__button">
+                      {userInfo &&
+                      user?.followers &&
+                      user?.followers.includes(userInfo._id) ? (
+                        <button
+                          type="button"
+                          onClick={() => followHandler("unfollow")}
+                        >
+                          UnFollow
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => followHandler("follow")}
+                        >
+                          Follow
+                        </button>
+                      )}
 
-                  {followLoading && (
-                    <div
-                      className="follow__loader"
-                      style={{
-                        position: "absolute",
-                        right: "-40%",
-                        bottom: "10%",
-                      }}
-                    >
-                      <Loader size="30px" />
-                    </div>
-                  )}
-                  {followError && (
-                    <div
-                      className="follow__error"
-                      style={{
-                        position: "absolute",
-                        right: "-40%",
-                        bottom: "10%",
-                      }}
-                    >
-                      <Message variant="danger">{followError}</Message>
+                      {followLoading && (
+                        <div
+                          className="follow__loader"
+                          style={{
+                            position: "absolute",
+                            right: "-40%",
+                            bottom: "10%",
+                          }}
+                        >
+                          <Loader size="30px" />
+                        </div>
+                      )}
+                      {followError && (
+                        <div
+                          className="follow__error"
+                          style={{
+                            position: "absolute",
+                            right: "-40%",
+                            bottom: "10%",
+                          }}
+                        >
+                          <Message variant="danger">{followError}</Message>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
-              )}
-            </div>
 
-            <div className="profile__info">
-              <h4 className="profile__info__name">
-                {ourProfile
-                  ? userInfo && userInfo?.username.toUpperCase()
-                  : user?.username && user?.username.toUpperCase()}
-              </h4>
-              <span className="profile__desc">
-                {ourProfile
-                  ? userInfo?.desc || "Nothing to Read..."
-                  : user?.desc || "Nothing to Read..."}
-              </span>
+                <div className="profile__info">
+                  <h4 className="profile__info__name">
+                    {ourProfile
+                      ? userInfo && userInfo?.username.toUpperCase()
+                      : user?.username && user?.username.toUpperCase()}
+                  </h4>
+                  <span className="profile__desc">
+                    {ourProfile
+                      ? userInfo?.desc || "Nothing to Read..."
+                      : user?.desc || "Nothing to Read..."}
+                  </span>
+                </div>
+              </div>
+              <div className="profile__bottom__right">
+                <Feed profile ourProfile={ourProfile} />
+                <Rightbar profile ourProfile={ourProfile} />
+              </div>
             </div>
           </div>
-          <div className="profile__bottom__right">
-            <Feed profile ourProfile={ourProfile} />
-            <Rightbar profile ourProfile={ourProfile} />
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 };

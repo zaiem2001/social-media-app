@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 // const cors = require("cors");
+const path = require("path");
 
 const { notFound, errorHandler } = require("./middlewares/ErrorMiddleware");
 const UserRoute = require("./routes/UserRoute");
@@ -25,12 +26,24 @@ const app = express();
 app.use(express.json());
 // app.use(cors);
 
-app.get("/", (req, res) => {
-  res.send("hello world...");
-});
-
 app.use("/api/users", UserRoute);
 app.use("/api/posts", PostRoute);
+
+// console.log(path.join(__dirname, "../client/build"));
+
+if (process.env.environment === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, "../", "client", "build", "index.html")
+    );
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
