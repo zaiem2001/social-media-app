@@ -158,7 +158,6 @@ const ProfilePage = () => {
   //   }
   // };
 
-
   return (
     <>
       <MyVerticallyCenteredModal
@@ -168,6 +167,8 @@ const ProfilePage = () => {
         }}
         followers={followers}
         loading={followersLoading}
+        user={userInfo && user}
+        ourProfile={ourProfile}
       />
 
       <NavBar />

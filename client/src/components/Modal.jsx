@@ -3,7 +3,7 @@ import Loader from "./Loader";
 import Message from "./Message";
 
 function MyVerticallyCenteredModal(props) {
-  const { followers, loading } = props;
+  const { followers, loading, user, ourProfile } = props;
 
   return (
     <Modal
@@ -17,7 +17,9 @@ function MyVerticallyCenteredModal(props) {
       }}
     >
       <Modal.Header>
-        <Modal.Title id="contained-modal-title-vcenter">Followers</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          {ourProfile ? "Your Followers" : `Followers (${user?.username})`}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body style={{ maxHeight: "350px", overflowY: "auto" }}>
         {loading && <Loader size="50px" />}

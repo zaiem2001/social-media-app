@@ -209,10 +209,15 @@ const UserController = {
       const lastUserUpdated = new Date(user.updatedAt).getUTCDate();
       const currentDate = new Date().getUTCDate();
 
+      const accUpdated = new Date(user.updatedAt).toString();
+      const accCreated = new Date(user.createdAt).toString();
+
       // console.log(lastUserUpdated + " " + currentDate);
       // console.log(lastUserUpdated === currentDate);
 
-      if (lastUserUpdated === currentDate) {
+      // console.log({ boo: accUpdated === accCreated, accCreated, accUpdated });
+
+      if (lastUserUpdated === currentDate && !(accUpdated === accCreated)) {
         res.status(404);
         throw new Error("You can update your profile Tomorrow");
       } else {
