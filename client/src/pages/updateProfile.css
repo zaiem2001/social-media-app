@@ -170,6 +170,10 @@
     flex-direction: column;
   }
 
+  .up__loader {
+    display: none;
+  }
+
   .updateProfile input {
     padding: 12px;
   }

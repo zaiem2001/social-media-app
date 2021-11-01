@@ -62,7 +62,11 @@ const LoginPage = ({ location, history }) => {
         </div>
 
         <div className="login__right">
-          {loading && <Loader />}
+          {loading && (
+            <div className="loading__loader my-2">
+              <Loader size="50px" />
+            </div>
+          )}
 
           {error ? (
             <Message variant="danger">

@@ -8,7 +8,7 @@ import "./navbar.css";
 import axios from "axios";
 import Example from "./Example";
 
-const NavBar = () => {
+const NavBar = ({ socket }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -25,7 +25,20 @@ const NavBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [open, setOpen] = useState(false);
+
   const history = useHistory();
+
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    socket?.current?.on("getNotification", (data) => {
+      console.log(data);
+      setNotifications((prev) => [...prev, data]);
+    });
+  }, [socket]);
+
+  // console.log(notifications);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,6 +76,11 @@ const NavBar = () => {
       setSearch({});
     }
   }, [userInfo, search, history]);
+
+  const handleRead = () => {
+    setOpen(false);
+    setNotifications([]);
+  };
 
   return (
     <div className="navbar">
@@ -109,15 +127,38 @@ const NavBar = () => {
             <span className="nav__badge">1</span>
           </div>
 
-          <div className="nav__notification">
-            <Message />
-            <span className="nav__badge">2</span>
+          <Link to="/messenger">
+            <div className="nav__notification">
+              <Message />
+              <span className="nav__badge">2</span>
+            </div>
+          </Link>
+
+          <div
+            className="nav__notification"
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            <Notifications />
+            {notifications?.length !== 0 && (
+              <span className="nav__badge">{notifications?.length}</span>
+            )}
           </div>
 
-          <div className="nav__notification">
-            <Notifications />
-            <span className="nav__badge">1</span>
-          </div>
+          {notifications.length !== 0 && (
+            <div
+              className={
+                open ? "notification__modal active" : "notification__modal"
+              }
+            >
+              {notifications?.map((n) => (
+                <span>{n.senderName} liked your post.</span>
+              ))}
+
+              <button className="markAsRead" onClick={handleRead} type="button">
+                Mark as Read
+              </button>
+            </div>
+          )}
         </div>
 
         <Link to={`/profile/${userInfo?._id}`}>

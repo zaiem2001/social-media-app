@@ -11,7 +11,7 @@ import Rightbar from "../components/Rightbar";
 import Sidebar from "../components/Sidebar";
 import "./homepage.css";
 
-const HomePage = () => {
+const HomePage = ({ socket }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo, loading, error } = userLogin;
 
@@ -42,10 +42,10 @@ const HomePage = () => {
 
       {error && <Message variant="danger">{error}</Message>}
       <div className="homepage">
-        <NavBar />
+        <NavBar socket={socket} />
         <div className="homepage__container">
           <Sidebar />
-          <Feed />
+          <Feed socket={socket} />
           <Rightbar />
         </div>
       </div>

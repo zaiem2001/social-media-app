@@ -14,8 +14,9 @@ import axios from "axios";
 import { Dropdown } from "react-bootstrap";
 import CommentsModal from "./CommentsModal";
 
-const Post = ({ post, ourProfile }) => {
+const Post = ({ post, ourProfile, socket }) => {
   // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  // console.log(socket);
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -81,6 +82,14 @@ const Post = ({ post, ourProfile }) => {
     // /api/posts/:id/like
 
     const url = `/api/posts/${post._id}/like`;
+
+    if (!isLiked) {
+      socket?.current?.emit("SendNotification", {
+        senderId: userInfo?._id,
+        senderName: userInfo?.username,
+        receiverId: post?.user,
+      });
+    }
 
     try {
       const config = {

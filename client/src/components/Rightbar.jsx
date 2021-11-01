@@ -105,9 +105,15 @@ const ProfileRightBar = ({ ourProfile }) => {
           {ourProfile ? "Your" : !loading && user?.username + "'s"} Info
         </h5>
 
-        <button type="button" onClick={handleLogout} className="logout__button">
-          Logout
-        </button>
+        {ourProfile && (
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="logout__button"
+          >
+            Logout
+          </button>
+        )}
       </div>
       <hr className="profile__hr" />
 

@@ -161,7 +161,7 @@ const UpdateProfile = ({ user, id }) => {
         <h3 className="up__heading">Update Profile ( {user} )</h3>
 
         <h5 className="up__info">
-          You won't be able to change your profile for next 24 hrs
+          You won't be able to change your Name for next 24 hrs
         </h5>
 
         <Link to="/">

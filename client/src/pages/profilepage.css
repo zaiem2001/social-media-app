@@ -145,6 +145,26 @@
   transform: scale(0.96);
 }
 
+.profile__message {
+  position: absolute;
+  right: 15%;
+  bottom: 2%;
+  background-color: rebeccapurple;
+  color: white;
+  letter-spacing: 1px;
+  display: flex;
+  padding: 5px 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all ease-in-out 200ms;
+  border-radius: 8px;
+}
+
+.profile__message:hover {
+  transform: scale(0.95);
+}
+
 @media only screen and (max-width: 770px) {
   .profile__update__button {
     right: 15% !important;

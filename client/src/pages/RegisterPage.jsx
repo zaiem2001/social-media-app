@@ -66,7 +66,11 @@ const RegisterPage = ({ history, location }) => {
 
         <div className="login__right">
           {/* message and loader component */}
-          {loading && <Loader />}
+          {loading && (
+            <div className="loading__loader my-2">
+              <Loader size="50px" />
+            </div>
+          )}
 
           {error ? (
             <Message variant="danger">

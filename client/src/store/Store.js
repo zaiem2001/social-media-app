@@ -14,6 +14,10 @@ import {
   userUserByIdReducer,
 } from "../reducers/userReducers";
 import { postAddReducer } from "../reducers/postReducers";
+import {
+  deleteConvReducer,
+  fetchConvReducer,
+} from "../reducers/messageReducers";
 
 export const reducer = combineReducers({
   userLogin: loginReducer,
@@ -25,6 +29,9 @@ export const reducer = combineReducers({
   userUpdate: userUpdateReducer,
   userFollow: userFollowUnfollowReducer,
   userFollowers: userFollowersReducer,
+
+  conversation: fetchConvReducer,
+  conversationDel: deleteConvReducer,
 
   postAdd: postAddReducer,
 });

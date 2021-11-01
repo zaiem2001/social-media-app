@@ -1,0 +1,148 @@
+.messenger {
+  display: flex;
+  height: calc(100vh - 50px);
+}
+
+.messenger__friends {
+  flex: 3.5;
+}
+
+.messenger__friends__wrapper {
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+.messenger__input {
+  width: 90%;
+  padding: 10px 15px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #eee;
+  font-size: 19px;
+  color: white;
+}
+
+.messenger__input:focus {
+  outline: none;
+}
+
+.messenger__friends__wrapper,
+.messenger__chatbox__wrapper,
+.messenger__online__wrapper {
+  padding: 10px;
+  height: 100%;
+}
+
+.messenger__chatbox {
+  flex: 5.5;
+  position: relative;
+}
+
+.chatbox__top {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.chatbox__bottom {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbox__textarea {
+  width: 80%;
+  padding: 10px;
+  height: 90px;
+  border-radius: 6px;
+}
+
+.chatbox__textarea:focus {
+  outline: none;
+}
+
+.chatbox__submit__button {
+  padding: 10px;
+  width: 100px;
+  border: none;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: teal;
+  color: white;
+  transition: all ease-in-out 200ms;
+}
+
+.chatbox__submit__button:hover {
+  transform: scale(0.95);
+}
+
+.messenger__online {
+  flex: 3;
+  position: relative;
+}
+
+.goBackButton {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  padding: 10px 20px;
+  border: none;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.noconversation__text {
+  position: absolute;
+  top: 10%;
+  font-size: 40px;
+  color: #e2e2e2;
+  opacity: 0.2;
+}
+
+.writeNewMsg {
+  text-align: center;
+  font-size: 30px;
+  top: 10%;
+  padding: 10px;
+  opacity: 0.5;
+}
+
+.profile__user__intro {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(212, 212, 212, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__user__intro img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.profile__user__intro span {
+  font-size: 19px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.online__list__container {
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+.messenger__online__list {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+}

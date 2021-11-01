@@ -7,6 +7,8 @@ const path = require("path");
 const { notFound, errorHandler } = require("./middlewares/ErrorMiddleware");
 const UserRoute = require("./routes/UserRoute");
 const PostRoute = require("./routes/PostRoute");
+const ConversationRoute = require("./routes/ConversationRoute");
+const MessageRoute = require("./routes/MessageRoute");
 
 const MONGO_URL = process.env.MONGO_URI;
 mongoose
@@ -28,6 +30,8 @@ app.use(express.json());
 
 app.use("/api/users", UserRoute);
 app.use("/api/posts", PostRoute);
+app.use("/api/conversations", ConversationRoute);
+app.use("/api/messages", MessageRoute);
 
 // console.log(path.join(__dirname, "../client/build"));
 

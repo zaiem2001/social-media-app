@@ -217,63 +217,66 @@ const UserController = {
 
       // console.log({ boo: accUpdated === accCreated, accCreated, accUpdated });
 
-      if (lastUserUpdated === currentDate && !(accUpdated === accCreated)) {
-        res.status(404);
-        throw new Error("You can update your profile Tomorrow");
-      } else {
-        user.username = req.body.username || user.username;
-        user.email = req.body.email || user.email;
-        user.profilePicture = req.body.profilePicture || user.profilePicture;
-        user.coverPicture = req.body.coverPicture || user.coverPicture;
-        user.desc = req.body.desc || user.desc;
-        user.state = req.body.state || user.state;
-        user.city = req.body.city || user.city;
-        user.relationship = Number(req.body.relationship) || user.relationship;
-
-        const userOldPassword = req.body.oldPassword;
-        const userNewPassword = req.body.newPassword;
-
-        if (userNewPassword && !userOldPassword) {
+      if (req.body.username) {
+        if (lastUserUpdated === currentDate && !(accUpdated === accCreated)) {
           res.status(404);
-          throw new Error("Enter your Old Password");
+          throw new Error("You can Change your username Tomorrow");
+        } else {
+          user.username = req.body.username || user.username;
         }
-
-        if (userOldPassword) {
-          if (!userNewPassword) {
-            res.status(404);
-            throw new Error("Enter new Password.");
-          }
-
-          const verifyPassword = await bcrypt.compare(
-            userOldPassword,
-            oldPassword
-          );
-
-          if (!verifyPassword) {
-            res.status(404);
-            throw new Error("Old password is Wrong...");
-          }
-
-          if (userOldPassword === userNewPassword) {
-            res.status(404);
-            throw new Error("New password cannot be same as old password.");
-          }
-
-          const hashedPassword = await bcrypt.hash(userNewPassword, 10);
-
-          user.password = hashedPassword;
-        }
-
-        const updatedUser = await user.save();
-
-        const { password: uPwd, ...other } = updatedUser._doc;
-
-        res.status(200).json({
-          msg: "user updated successfully",
-          token: generateToken(user._id),
-          ...other,
-        });
       }
+      // user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+      user.profilePicture = req.body.profilePicture || user.profilePicture;
+      user.coverPicture = req.body.coverPicture || user.coverPicture;
+      user.desc = req.body.desc || user.desc;
+      user.state = req.body.state || user.state;
+      user.city = req.body.city || user.city;
+      user.relationship = Number(req.body.relationship) || user.relationship;
+
+      const userOldPassword = req.body.oldPassword;
+      const userNewPassword = req.body.newPassword;
+
+      if (userNewPassword && !userOldPassword) {
+        res.status(404);
+        throw new Error("Enter your Old Password");
+      }
+
+      if (userOldPassword) {
+        if (!userNewPassword) {
+          res.status(404);
+          throw new Error("Enter new Password.");
+        }
+
+        const verifyPassword = await bcrypt.compare(
+          userOldPassword,
+          oldPassword
+        );
+
+        if (!verifyPassword) {
+          res.status(404);
+          throw new Error("Old password is Wrong...");
+        }
+
+        if (userOldPassword === userNewPassword) {
+          res.status(404);
+          throw new Error("New password cannot be same as old password.");
+        }
+
+        const hashedPassword = await bcrypt.hash(userNewPassword, 10);
+
+        user.password = hashedPassword;
+      }
+
+      const updatedUser = await user.save();
+
+      const { password: uPwd, ...other } = updatedUser._doc;
+
+      res.status(200).json({
+        msg: "user updated successfully",
+        token: generateToken(user._id),
+        ...other,
+      });
     } else {
       res.status(400);
       throw new Error("Something Went Wrong, Try Again.");

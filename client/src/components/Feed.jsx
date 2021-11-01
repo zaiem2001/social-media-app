@@ -12,7 +12,7 @@ import { ArrowBack } from "@material-ui/icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Feed = ({ profile, ourProfile }) => {
+const Feed = ({ profile, ourProfile, socket }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -134,10 +134,15 @@ const Feed = ({ profile, ourProfile }) => {
 
         {!loading && profile
           ? formatedPosts?.map((post) => (
-              <Post ourProfile={ourProfile} key={post._id} post={post} />
+              <Post
+                ourProfile={ourProfile}
+                key={post._id}
+                post={post}
+                socket={socket}
+              />
             ))
           : formatedTimelinePosts?.map((post) => (
-              <Post key={post._id} post={post} />
+              <Post key={post._id} post={post} socket={socket} />
             ))}
       </div>
     </div>

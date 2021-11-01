@@ -10,7 +10,6 @@ const Online = ({ user }) => {
             alt="user"
             className="rightbar__online__img"
           />
-          <span className="rightbar__badge"></span>
         </div>
 
         <span className="rightbar__online__username">
