@@ -43,10 +43,11 @@ const Messenger = () => {
   const socket = useRef();
   const [arrivalMsg, setArrivalMsg] = useState(null);
 
-  const urlHeroku = "https://zsocial-socket.herokuapp.com/";
+  // const urlHeroku = "https://zsocial-socket.herokuapp.com/";
+  // const urlLocal = "ws://localhost:8900";
 
   useEffect(() => {
-    socket.current = io(urlHeroku);
+    socket.current = io("https://zsocial-socket.herokuapp.com");
 
     socket.current.on("getMessage", (data) => {
       setArrivalMsg({

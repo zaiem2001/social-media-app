@@ -4,13 +4,13 @@ const socketio = require("socket.io");
 
 const app = express();
 
-const origin = "https://zsocialapp.herokuapp.com/";
-// const originDev = "http://localhost:3000";
+// const origin = "https://zsocialapp.herokuapp.com/";
+// const originDev = "http://localhost:3000/";
 
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: origin,
+    origin: "https://zsocialapp.herokuapp.com",
   },
 });
 
@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
 
 app.get("/", (req, res) => {
   try {
-    res.status(200).send("api is running...");
+    res.status(200).send("API is running...");
   } catch (error) {
     res.status(500).json(error);
   }
