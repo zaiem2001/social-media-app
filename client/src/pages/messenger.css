@@ -146,3 +146,62 @@
   text-transform: uppercase;
   font-weight: 500;
 }
+
+@media only screen and (max-width: 600px) {
+  .messenger {
+    flex-direction: column;
+  }
+
+  .messenger__friends {
+    flex: 1.5;
+  }
+
+  .messenger__input {
+    display: none;
+  }
+
+  .messenger__friends__wrapper {
+    display: flex;
+    width: 95%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .noconversation__text {
+    text-align: center;
+    font-size: 35px;
+  }
+
+  .chatbox__top {
+    max-height: 400px;
+  }
+
+  .chatbox__textarea {
+    height: 50px;
+    width: 70%;
+  }
+
+  /* conversation */
+
+  .conversation {
+    display: inline-block;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .conversation.active {
+    background-color: transparent;
+    color: white;
+  }
+
+  /* chat online */
+
+  .chatOnline {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+}

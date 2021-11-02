@@ -173,6 +173,10 @@
   .profile__follow__button {
     right: 15%;
   }
+
+  .profile__message {
+    right: 64%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -220,5 +224,10 @@
   .profile__follow__button button {
     width: 100%;
     font-size: 12px !important;
+  }
+
+  .profile__message {
+    font-size: 12px;
+    bottom: 3%;
   }
 }

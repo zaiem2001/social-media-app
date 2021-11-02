@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getUserConversations } from "../actions/messageActions";
 import { getUserById } from "../actions/userActions";
 import { io } from "socket.io-client";
+import { Helmet } from "react-helmet";
 
 import ChatMessage from "../components/ChatMessage";
 import ChatOnline from "../components/ChatOnline";
@@ -90,25 +91,25 @@ const Messenger = () => {
 
   useEffect(() => {
     const getMessages = async () => {
-      if (currentChat) {
-        const url = `/api/messages/${currentChat?._id}`;
+      const url = `/api/messages/${currentChat?._id}`;
 
-        const config = {
-          headers: {
-            Authorization: `Bearer ${userInfo && userInfo.token}`,
-          },
-        };
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo && userInfo.token}`,
+        },
+      };
 
-        try {
-          const { data } = await axios.get(url, config);
-          setMessages(data);
-        } catch (error) {
-          console.log(error);
-        }
+      try {
+        const { data } = await axios.get(url, config);
+        setMessages(data);
+      } catch (error) {
+        console.log(error);
       }
     };
 
-    getMessages();
+    if (currentChat) {
+      getMessages();
+    }
     setSuccess(false);
   }, [currentChat, userInfo, success, delSuccess]);
 
@@ -119,10 +120,10 @@ const Messenger = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfo && currentChat) {
       dispatch(getUserById(friendId));
     }
-  }, [userInfo, friendId, dispatch]);
+  }, [userInfo, friendId, dispatch, currentChat]);
 
   // SEND THE MESSAGE
   const handleSubmit = async (e) => {
@@ -164,6 +165,19 @@ const Messenger = () => {
 
   return (
     <div className="messenger">
+      <Helmet>
+        <title>Z social - Messenger Chat Online</title>
+        <meta
+          name="description"
+          content="Chat with your friends seamlessly without any disturbance."
+        />
+
+        <meta
+          name="keywords"
+          content="social media app, instagaram, instagaram clone, facebook, facebook clone, Chat with friends, Video call with friends, meet new friends online, make new friends faster and easier"
+        />
+      </Helmet>
+
       <div className="messenger__friends">
         <div className="messenger__friends__wrapper">
           <input

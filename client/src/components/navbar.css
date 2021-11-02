@@ -217,7 +217,7 @@
     flex: 3;
   }
 
-  .nav__notification:not(:nth-child(2)) {
+  .nav__notifications .Person {
     display: none;
   }
 
@@ -243,5 +243,9 @@
 @media only screen and (max-width: 380px) {
   .right__links span {
     font-size: 11px;
+  }
+
+  .navbar {
+    padding-left: 4px;
   }
 }

@@ -33,7 +33,7 @@ const NavBar = ({ socket }) => {
 
   useEffect(() => {
     socket?.current?.on("getNotification", (data) => {
-      console.log(data);
+      // console.log(data);
       setNotifications((prev) => [...prev, data]);
     });
   }, [socket]);
