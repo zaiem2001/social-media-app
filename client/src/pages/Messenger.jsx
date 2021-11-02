@@ -44,7 +44,7 @@ const Messenger = () => {
   const [arrivalMsg, setArrivalMsg] = useState(null);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("https://zsocial-socket.herokuapp.com/");
 
     socket.current.on("getMessage", (data) => {
       setArrivalMsg({

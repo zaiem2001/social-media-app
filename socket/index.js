@@ -1,8 +1,20 @@
-const io = require("socket.io")(8900, {
-  cors: {
-    origin: "http://localhost:3000",
-  },
-});
+const express = require("express");
+const http = require("http");
+const socketio = require("socket.io");
+const cors = require("cors");
+
+const app = express();
+
+const server = http.createServer(app);
+const io = socketio(server);
+
+// const io = require("socket.io")(PORT, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//   },
+// });
+
+app.use(cors());
 
 let users = [];
 
@@ -18,6 +30,14 @@ const deleteUser = (socketId) => {
 const getUser = (userId) => {
   return users.find((user) => user.userId === userId);
 };
+
+app.get("/", (req, res) => {
+  try {
+    res.status(200).json({ msg: "server is running..." });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 io.on("connection", (socket) => {
   console.log("user connected...");
@@ -53,3 +73,7 @@ io.on("connection", (socket) => {
     io.emit("getUsers", users);
   });
 });
+
+const PORT = process.env.PORT || 8900;
+
+server.listen(PORT, () => console.log("server is running on port " + PORT));
