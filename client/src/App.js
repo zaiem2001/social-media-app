@@ -17,8 +17,11 @@ function App() {
 
   const socket = useRef();
 
+  // const urlLocal = "ws://localhost:8900";
+  const urlHeroku = "https://zsocial-socket.herokuapp.com/";
+
   useEffect(() => {
-    socket.current = io("https://zsocial-socket.herokuapp.com/");
+    socket.current = io(urlHeroku);
   }, []);
 
   useEffect(() => {

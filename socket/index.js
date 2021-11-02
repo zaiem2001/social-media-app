@@ -1,20 +1,24 @@
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
-const cors = require("cors");
 
 const app = express();
 
+const origin = "https://zsocialapp.herokuapp.com/";
+// const originDev = "http://localhost:3000";
+
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+    origin: origin,
+  },
+});
 
 // const io = require("socket.io")(PORT, {
 //   cors: {
 //     origin: "http://localhost:3000",
 //   },
 // });
-
-app.use(cors());
 
 let users = [];
 
@@ -30,14 +34,6 @@ const deleteUser = (socketId) => {
 const getUser = (userId) => {
   return users.find((user) => user.userId === userId);
 };
-
-app.get("/", (req, res) => {
-  try {
-    res.status(200).json({ msg: "server is running..." });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
 
 io.on("connection", (socket) => {
   console.log("user connected...");
@@ -72,6 +68,14 @@ io.on("connection", (socket) => {
 
     io.emit("getUsers", users);
   });
+});
+
+app.get("/", (req, res) => {
+  try {
+    res.status(200).send("api is running...");
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 const PORT = process.env.PORT || 8900;
