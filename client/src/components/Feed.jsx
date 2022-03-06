@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
-import { getTimelinePosts, getUserPosts } from "../actions/userActions";
+import { getTimelinePosts, getUserPosts, logout } from "../actions/userActions";
 import Post from "./Post";
 import Share from "./Share";
 // import { Posts } from "../dummyData";
@@ -85,13 +85,14 @@ const Feed = ({ profile, ourProfile, socket }) => {
 
           setUsers(data);
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
+          dispatch(logout());
         }
       };
 
       getUsers();
     }
-  }, [userInfo]);
+  }, [userInfo, dispatch]);
 
   return (
     <div className="feed">

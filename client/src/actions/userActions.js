@@ -151,6 +151,8 @@ export const getTimelinePosts = () => async (dispatch, getState) => {
 
       dispatch({ type: USER_CONSTANTS.USER_TIMELINE_SUCCESS, payload: data });
     } catch (error) {
+      console.log(error);
+      dispatch(logout());
       dispatch({
         type: USER_CONSTANTS.USER_TIMELINE_FAIL,
         payload:

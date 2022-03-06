@@ -9,6 +9,7 @@ import {
   getUserById,
   getUserFollowers,
   getUserPosts,
+  logout,
 } from "../actions/userActions";
 import MyVerticallyCenteredModal from "../components/Modal";
 import { USER_CONSTANTS } from "../reducers/userReducers";
@@ -102,6 +103,7 @@ const ProfilePage = ({ socket }) => {
           setLoggedUser(data);
         } catch (error) {
           console.log(error);
+          dispatch(logout());
         }
       };
 
@@ -332,8 +334,8 @@ const ProfilePage = ({ socket }) => {
             <div className="profile__info">
               <h4 className="profile__info__name">
                 {ourProfile
-                  ? userInfo && userInfo?.username.toUpperCase()
-                  : user?.username && user?.username.toUpperCase()}
+                  ? userInfo && userInfo?.username?.toUpperCase()
+                  : user?.username && user?.username?.toUpperCase()}
               </h4>
               <span className="profile__desc">
                 {ourProfile
