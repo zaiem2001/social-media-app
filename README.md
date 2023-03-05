@@ -2,7 +2,7 @@
 
 ## Link for the APP :-
 
-* Deployed to heroku - https://zsocialapp.herokuapp.com/
+* Deployed to render :- https://zsocialapp.onrender.com/
 
 ## FEATURES :-
  
